@@ -3,12 +3,16 @@
     x:Class="AhorrosApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:AhorrosApp"
+    xmlns:views="clr-namespace:AhorrosApp.Views"
     Title="AhorrosApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+            Title="Gastos"
+            Icon="gastos_icon.png"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="GastosPage"/>
+
+    </TabBar>
 
 </Shell>

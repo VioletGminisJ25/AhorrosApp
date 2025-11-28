@@ -16,11 +16,14 @@ namespace AhorrosApp.Services.Data
         private string DatabasePath =>
             Path.Combine(FileSystem.AppDataDirectory, "AhorrosApp.db3");
 
+
         public DatabaseService()
         {
+            if (_database is not null)
+                return;
+            _database = new SQLiteAsyncConnection(DatabasePath);
             InitializeAsync();
             Debug.WriteLine($"Database path: {DatabasePath}");
-
         }
 
         async void InitializeAsync()
@@ -28,11 +31,10 @@ namespace AhorrosApp.Services.Data
             try
             {
 
-                if (_database != null)
-                    return;
-                _database = new SQLiteAsyncConnection(DatabasePath);
+                Debug.WriteLine("DatabasePath: "+ DatabasePath);
                 await _database.CreateTableAsync<Categoria>();
                 await _database.CreateTableAsync<Gasto>();
+                await _database.CreateTableAsync<ObjetivoAhorro>();
 
                 await SeedCategoriesAsync();
                 Debug.WriteLine("Database initialized!");

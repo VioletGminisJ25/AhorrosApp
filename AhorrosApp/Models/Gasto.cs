@@ -14,16 +14,15 @@ namespace AhorrosApp.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-
         public decimal Importe { get; set; }
         public DateTime Fecha { get; set; }
-        public string Descripcion { get; set; }
+        public string? Descripcion { get; set; }
 
         [ForeignKey(typeof(Categoria))]
         public int CategoriaId { get; set; }
 
         [Ignore]
-        public string NombreCategoria { get; set; }
+        public string? NombreCategoria { get; set; }
 
     }
 }

@@ -1,8 +1,10 @@
-﻿namespace AhorrosApp
+﻿using AhorrosApp.Services.Data;
+
+namespace AhorrosApp
 {
     public partial class App : Application
     {
-        public App()
+        public App(DatabaseService databaseService)
         {
             InitializeComponent();
         }
